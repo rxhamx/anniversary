@@ -1,165 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>subzero.</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Special+Elite&display=swap" rel="stylesheet">
+<title>subzero. | Amal</title>
 
 <link rel="stylesheet" href="style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
+
 
 <body>
 
-<div id="hearts"></div>
 
-<div id="loading">
+<!-- STAR BACKGROUND -->
 
-<div class="logo">subzero.</div>
+<div id="stars"></div>
 
-<p class="loadingText">loading memories...</p>
+
+<!-- MOUSE HEARTS -->
+
+<div id="cursorHeart"></div>
+
+
+<!-- CINEMATIC INTRO -->
+
+<div id="intro">
+
+<div class="introLogo">
+subzero.
+</div>
+
+<p>
+a story written in memories...
+</p>
 
 </div>
 
+
+
+<!-- PASSCODE -->
+
 <div id="lockScreen">
 
-<h1>subzero.</h1>
 
-<p>enter the passcode</p>
+<div class="glass login">
 
-<input
+<h1>
+subzero.
+</h1>
+
+<p>
+enter our date
+</p>
+
+
+<input 
 id="password"
 type="password"
 maxlength="4"
-placeholder="••••">
+placeholder="1507">
+
 
 <button id="unlockBtn">
-unlock
+enter
 </button>
+
 
 <p id="wrong"></p>
 
 </div>
 
+
+</div>
+
+
+
+
+
+<!-- MAIN WEBSITE -->
+
+
 <div id="website">
+
+
+
+<!-- HERO -->
 
 <section class="hero">
 
-<h1 id="heroTitle"></h1>
 
-<p id="heroSubtitle"></p>
+<div class="heroContent">
+
+
+<h1 id="heroTitle">
+</h1>
+
+
+<p id="heroSubtitle">
+</p>
+
+
+<div class="counter glass">
+
+<h3>
+days together
+</h3>
+
+<span id="days">
+0
+</span>
+
+</div>
+
+
 
 <button id="begin">
-open
+open memories
 </button>
 
-</section>
-
-<section class="letterSection">
-
-<h2>to amal.</h2>
-
-<div class="letter">
-
-<p id="letterText"></p>
 
 </div>
+
 
 </section>
 
-<section class="timeline">
 
-<h2>our story.</h2>
 
-<div class="cards">
 
-<div class="card">
-<h3>the beginning</h3>
-<p>
-everything started with a simple conversation.
-none of us knew it would become something unforgettable.
-</p>
-</div>
 
-<div class="card">
-<h3>the memories</h3>
-<p>
-every laugh,
-every late night,
-every small moment became part of a story
-i'll always remember.
-</p>
-</div>
 
-<div class="card">
-<h3>today</h3>
-<p>
-no matter where life takes us,
-i'll always be grateful
-our paths crossed.
-</p>
-</div>
+
+<!-- LETTERS -->
+
+
+<section class="letters">
+
+
+<h2>
+letters.
+</h2>
+
+
+
+<div class="letterBook">
+
+
+
+<div class="letter glass">
+
+<h3>
+chapter one
+</h3>
+
+<p id="letter1"></p>
 
 </div>
+
+
+
+
+<div class="letter glass">
+
+<h3>
+chapter two
+</h3>
+
+<p id="letter2"></p>
+
+</div>
+
+
+
+
+<div class="letter glass">
+
+<h3>
+chapter three
+</h3>
+
+<p id="letter3"></p>
+
+</div>
+
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+
+
+
+<!-- MEMORY GALLERY -->
+
 
 <section class="gallery">
 
-<h2>memories.</h2>
+
+<h2>
+memories.
+</h2>
+
+
 
 <div class="galleryGrid">
 
-<div class="photo">
-<span>your photo</span>
-</div>
 
-<div class="photo">
-<span>our memory</span>
-</div>
+<img src="images/memory1.jpg" class="memory">
 
-<div class="photo">
-<span>favorite moment</span>
-</div>
+<img src="images/memory2.jpg" class="memory">
 
-<div class="photo">
-<span>another memory</span>
-</div>
+<img src="images/memory3.jpg" class="memory">
+
+<img src="images/memory4.jpg" class="memory">
+
 
 </div>
+
+
 
 </section>
+
+
+
+
+
+
+<!-- FULLSCREEN IMAGE -->
+
+<div id="viewer">
+
+<img id="viewerImg">
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- QUOTES -->
+
 
 <section class="quote">
 
-<h2 id="quoteText"></h2>
+
+<h2 id="quote">
+
+</h2>
+
 
 </section>
 
-<section class="hiddenMessage">
+
+
+
+
+
+
+
+
+<!-- FINAL -->
+
+
+<section class="ending">
+
 
 <button id="secretButton">
 
-there's one last thing...
+open the final memory
 
 </button>
 
-<div id="ending">
 
-<h2>happy anniversary.</h2>
 
-<p id="endingText"></p>
+<div id="finalScreen">
+
+
+<h1>
+</h1>
+
+
+<p id="finalMessage">
+</p>
+
 
 </div>
 
+
+
 </section>
+
+
+
+
+
+
+
 
 <footer>
 
@@ -167,23 +318,35 @@ subzero.
 
 </footer>
 
+
+
+
 </div>
 
-<audio
-id="music"
-loop>
+
+
+
+
+
+<!-- MUSIC -->
+
+<audio id="music" loop>
 
 <source src="music.mp3" type="audio/mpeg">
 
 </audio>
 
+
 <button id="musicBtn">
-
 ♫
-
 </button>
+
+
+
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
