@@ -191,11 +191,7 @@ stars.appendChild(star);
 function updateDays(){
 
 
-let start=new Date();
-
-
-start.setMonth(6);
-start.setDate(15);
+let start = new Date("2025-07-15");
 
 
 
