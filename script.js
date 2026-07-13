@@ -76,9 +76,16 @@ function typeWriter(){
     }
 
 }
-
 document.getElementById("continueBtn").onclick=function(){
 
-    alert("Page 2 coming next ❤️");
+    document.getElementById("intro").classList.add("hidden");
+
+    document.getElementById("story").classList.remove("hidden");
+
+};
+
+document.getElementById("storyNext").onclick=function(){
+
+    alert("Gallery page coming next ❤️");
 
 };
