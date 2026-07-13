@@ -18,17 +18,16 @@
 <body>
 
 
-<!-- STAR BACKGROUND -->
-
+<!-- Stars background -->
 <div id="stars"></div>
 
 
-<!-- MOUSE HEARTS -->
+<!-- Floating hearts -->
+<div id="hearts"></div>
 
-<div id="cursorHeart"></div>
 
 
-<!-- CINEMATIC INTRO -->
+<!-- Intro -->
 
 <div id="intro">
 
@@ -44,19 +43,23 @@ a story written in memories...
 
 
 
-<!-- PASSCODE -->
+
+
+<!-- Password Screen -->
 
 <div id="lockScreen">
 
 
 <div class="glass login">
 
+
 <h1>
 subzero.
 </h1>
 
+
 <p>
-enter our date
+enter the passcode
 </p>
 
 
@@ -64,46 +67,49 @@ enter our date
 id="password"
 type="password"
 maxlength="4"
-placeholder="1507">
+placeholder="••••">
 
 
 <button id="unlockBtn">
-enter
+unlock
 </button>
 
 
 <p id="wrong"></p>
 
-</div>
-
 
 </div>
 
 
+</div>
 
 
 
-<!-- MAIN WEBSITE -->
+
+
+
+
+
+<!-- Main Website -->
 
 
 <div id="website">
 
 
 
-<!-- HERO -->
+<!-- Hero -->
 
 <section class="hero">
 
 
-<div class="heroContent">
+<div>
 
 
-<h1 id="heroTitle">
-</h1>
+<h1 id="heroTitle"></h1>
 
 
-<p id="heroSubtitle">
-</p>
+<p id="heroSubtitle"></p>
+
 
 
 <div class="counter glass">
@@ -112,9 +118,11 @@ enter
 days together
 </h3>
 
+
 <span id="days">
 0
 </span>
+
 
 </div>
 
@@ -136,7 +144,7 @@ open memories
 
 
 
-<!-- LETTERS -->
+<!-- Letters -->
 
 
 <section class="letters">
@@ -151,16 +159,18 @@ letters.
 <div class="letterBook">
 
 
-
 <div class="letter glass">
 
 <h3>
 chapter one
 </h3>
 
+
 <p id="letter1"></p>
 
+
 </div>
+
 
 
 
@@ -171,9 +181,12 @@ chapter one
 chapter two
 </h3>
 
+
 <p id="letter2"></p>
 
+
 </div>
+
 
 
 
@@ -184,8 +197,10 @@ chapter two
 chapter three
 </h3>
 
+
 <p id="letter3"></p>
 
+
 </div>
 
 
@@ -202,58 +217,7 @@ chapter three
 
 
 
-<!-- MEMORY GALLERY -->
-
-
-<section class="gallery">
-
-
-<h2>
-memories.
-</h2>
-
-
-
-<div class="galleryGrid">
-
-
-<img src="images/memory1.jpg" class="memory">
-
-<img src="images/memory2.jpg" class="memory">
-
-<img src="images/memory3.jpg" class="memory">
-
-<img src="images/memory4.jpg" class="memory">
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-<!-- FULLSCREEN IMAGE -->
-
-<div id="viewer">
-
-<img id="viewerImg">
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- QUOTES -->
+<!-- Quote -->
 
 
 <section class="quote">
@@ -273,8 +237,7 @@ memories.
 
 
 
-
-<!-- FINAL -->
+<!-- Ending -->
 
 
 <section class="ending">
@@ -288,6 +251,7 @@ open the final memory
 
 
 
+
 <div id="finalScreen">
 
 
@@ -296,6 +260,7 @@ open the final memory
 
 
 <p id="finalMessage">
+
 </p>
 
 
@@ -304,7 +269,6 @@ open the final memory
 
 
 </section>
-
 
 
 
@@ -321,25 +285,10 @@ subzero.
 
 
 
+
 </div>
 
 
-
-
-
-
-<!-- MUSIC -->
-
-<audio id="music" loop>
-
-<source src="music.mp3" type="audio/mpeg">
-
-</audio>
-
-
-<button id="musicBtn">
-♫
-</button>
 
 
 
