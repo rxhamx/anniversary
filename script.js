@@ -1,5 +1,5 @@
 // ============================
-// INTRO + PASSCODE
+// INTRO
 // ============================
 
 window.addEventListener("load",()=>{
@@ -8,42 +8,55 @@ window.addEventListener("load",()=>{
 
         document.getElementById("intro").style.display="none";
 
-    },3200);
+    },3500);
 
 });
 
 
 
+
+// ============================
+// PASSWORD
+// ============================
+
+
+const password=document.getElementById("password");
 const unlock=document.getElementById("unlockBtn");
-const pass=document.getElementById("password");
 const wrong=document.getElementById("wrong");
 
 
 unlock.onclick=function(){
 
-    if(pass.value==="1507"){
 
-        document.getElementById("lockScreen").style.display="none";
-
-        document.getElementById("website").style.display="block";
+if(password.value==="1507"){
 
 
-        createStars();
+document.getElementById("lockScreen").style.display="none";
 
-        startHero();
-
-        updateDays();
-
-        startMusic();
+document.getElementById("website").style.display="block";
 
 
-    }else{
+createStars();
 
-        wrong.innerHTML="wrong date.";
+startHero();
 
-    }
+updateDays();
+
+
+}else{
+
+
+wrong.innerHTML="wrong passcode.";
+
+
+password.value="";
+
+
+}
+
 
 };
+
 
 
 
@@ -53,52 +66,73 @@ unlock.onclick=function(){
 // ============================
 
 
-let hero="happy anniversary.";
-let sub="one year of memories, moments, and a story i'll always remember.";
+const title="happy anniversary.";
 
-let h=0;
-let s=0;
+const subtitle=
+"one year of memories, moments, and a story i'll always remember.";
+
+
+let titleIndex=0;
+let subtitleIndex=0;
+
 
 
 function startHero(){
 
-    typeHero();
+typeTitle();
 
 }
 
 
 
-function typeHero(){
+function typeTitle(){
 
-    if(h<hero.length){
 
-        document.getElementById("heroTitle").innerHTML+=hero[h];
+if(titleIndex<title.length){
 
-        h++;
 
-        setTimeout(typeHero,100);
+document.getElementById("heroTitle").innerHTML+=
+title[titleIndex];
 
-    }else{
 
-        typeSub();
+titleIndex++;
 
-    }
+
+setTimeout(typeTitle,100);
+
+
+}else{
+
+
+typeSubtitle();
+
+
+}
+
 
 }
 
 
 
-function typeSub(){
 
-    if(s<sub.length){
+function typeSubtitle(){
 
-        document.getElementById("heroSubtitle").innerHTML+=sub[s];
 
-        s++;
+if(subtitleIndex<subtitle.length){
 
-        setTimeout(typeSub,35);
 
-    }
+document.getElementById("heroSubtitle").innerHTML+=
+subtitle[subtitleIndex];
+
+
+subtitleIndex++;
+
+
+setTimeout(typeSubtitle,35);
+
+
+}
+
 
 }
 
@@ -114,31 +148,35 @@ function typeSub(){
 
 function createStars(){
 
-let area=document.getElementById("stars");
+
+const stars=document.getElementById("stars");
 
 
-for(let i=0;i<160;i++){
-
-    let star=document.createElement("div");
-
-    star.className="star";
+for(let i=0;i<150;i++){
 
 
-    star.style.left=Math.random()*100+"vw";
-
-    star.style.top=Math.random()*100+"vh";
+let star=document.createElement("div");
 
 
-    star.style.animationDelay=Math.random()*5+"s";
+star.className="star";
 
 
-    area.appendChild(star);
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+
+star.style.animationDelay=
+Math.random()*5+"s";
+
+
+stars.appendChild(star);
+
 
 }
 
 
 }
-
 
 
 
@@ -146,7 +184,7 @@ for(let i=0;i<160;i++){
 
 
 // ============================
-// DAYS COUNTER
+// DAYS SINCE 15 JULY
 // ============================
 
 
@@ -155,14 +193,17 @@ function updateDays(){
 
 let start=new Date();
 
+
 start.setMonth(6);
 start.setDate(15);
 
 
-let today=new Date();
+
+let now=new Date();
 
 
-let difference=today-start;
+let difference=now-start;
+
 
 
 let days=Math.floor(
@@ -174,7 +215,6 @@ difference/(1000*60*60*24)
 document.getElementById("days").innerHTML=days;
 
 
-
 }
 
 
@@ -183,8 +223,9 @@ document.getElementById("days").innerHTML=days;
 
 
 
+
 // ============================
-// MOUSE HEARTS
+// FLOATING HEARTS
 // ============================
 
 
@@ -193,7 +234,9 @@ document.addEventListener("mousemove",(e)=>{
 
 let heart=document.createElement("div");
 
+
 heart.className="heart";
+
 
 heart.innerHTML="❤";
 
@@ -203,14 +246,19 @@ heart.style.left=e.clientX+"px";
 heart.style.top=e.clientY+"px";
 
 
-document.body.appendChild(heart);
+
+document.getElementById("hearts").appendChild(heart);
+
 
 
 setTimeout(()=>{
 
+
 heart.remove();
 
+
 },2000);
+
 
 
 });
@@ -222,46 +270,43 @@ heart.remove();
 
 
 
+
 // ============================
-// LETTER ANIMATION
+// LETTERS
 // ============================
 
 
-let letters=[
+const letters=[
+
 
 `Dear Amal,
 
-Sometimes the smallest moments become the biggest memories.
+Until I found you, I never knew someone could become such an important part of my life.
 
-Thank you for every laugh, every conversation, and every moment that made life feel special.`,
+Thank you for every smile, every conversation, and every memory that became special.`,
 
 
+`A year is not just a number.
 
-`A year can be measured in days,
-but memories cannot be measured.
+It is every laugh, every moment, every lesson, and every memory that became part of our story.
 
-Every chapter became something I will always remember.`,
-
+Some moments stay with us forever.`,
 
 
 `No matter where life takes us,
+
 I'll always be grateful our paths crossed.
 
-Thank you for being part of my story.`
+Thank you for being a beautiful chapter of my life.
+
+Happy Anniversary, Amal.`
 
 
 ];
 
 
 
-let positions=[0,0,0];
-
-
-let ids=[
-"letter1",
-"letter2",
-"letter3"
-];
+let written=[false,false,false];
 
 
 
@@ -271,14 +316,24 @@ window.addEventListener("scroll",()=>{
 document.querySelectorAll(".letter").forEach((box,index)=>{
 
 
-let location=box.getBoundingClientRect().top;
+let position=
+box.getBoundingClientRect().top;
 
 
-if(location < window.innerHeight-100 && positions[index]===0){
+
+if(position < window.innerHeight-120 && !written[index]){
+
+
+written[index]=true;
+
+box.classList.add("show");
+
 
 writeLetter(index);
 
+
 }
+
 
 
 });
@@ -295,19 +350,25 @@ function writeLetter(number){
 
 let text=letters[number];
 
+let index=0;
 
-let i=0;
+
+let target=document.getElementById(
+"letter"+(number+1)
+);
+
 
 
 function typing(){
 
 
-if(i<text.length){
+if(index<text.length){
 
 
-document.getElementById(ids[number]).innerHTML+=text[i];
+target.innerHTML+=text[index];
 
-i++;
+
+index++;
 
 
 setTimeout(typing,35);
@@ -319,54 +380,10 @@ setTimeout(typing,35);
 }
 
 
-positions[number]=1;
-
 typing();
 
 
 }
-
-
-
-
-
-
-
-
-
-// ============================
-// IMAGE VIEWER
-// ============================
-
-
-let images=document.querySelectorAll(".memory");
-
-
-images.forEach(img=>{
-
-
-img.onclick=function(){
-
-
-document.getElementById("viewer").style.display="flex";
-
-
-document.getElementById("viewerImg").src=this.src;
-
-
-};
-
-
-});
-
-
-
-document.getElementById("viewer").onclick=function(){
-
-this.style.display="none";
-
-};
-
 
 
 
@@ -383,93 +400,40 @@ let quote=
 "Some people become memories. Some memories become forever.";
 
 
-let q=0;
-
-
-function quoteWrite(){
-
-
-if(q<quote.length){
-
-
-document.getElementById("quote").innerHTML+=quote[q];
-
-q++;
-
-setTimeout(quoteWrite,50);
-
-
-}
-
-
-}
-
-
-setTimeout(quoteWrite,4000);
+let quoteIndex=0;
 
 
 
+setTimeout(()=>{
 
 
+function writeQuote(){
 
 
-// ============================
-// MUSIC
-// ============================
+if(quoteIndex<quote.length){
 
 
-function startMusic(){
+document.getElementById("quote").innerHTML+=
+quote[quoteIndex];
 
 
-let music=document.getElementById("music");
+quoteIndex++;
 
 
-music.play().catch(()=>{
-
-console.log("browser blocked autoplay");
-
-});
+setTimeout(writeQuote,50);
 
 
 }
 
 
-
-let musicButton=document.getElementById("musicBtn");
-
-
-let playing=false;
-
-
-musicButton.onclick=function(){
-
-
-let music=document.getElementById("music");
-
-
-if(!playing){
-
-music.play();
-
-this.innerHTML="❚❚";
-
-playing=true;
-
-
-}else{
-
-
-music.pause();
-
-this.innerHTML="♫";
-
-playing=false;
-
-
 }
 
 
-};
+writeQuote();
+
+
+},4000);
+
 
 
 
@@ -488,9 +452,6 @@ document.getElementById("secretButton").onclick=function(){
 document.getElementById("finalScreen").style.display="block";
 
 
-document.body.style.transition="2s";
-
-
 heartExplosion();
 
 
@@ -501,9 +462,10 @@ finalTyping();
 
 
 
-let finalText=
-"Until I found you, I found a part of myself.\n\nHappy Anniversary, Amal.";
 
+
+const finalMessage=
+"Until I found you, I found a part of myself.\n\nHappy Anniversary, Amal.";
 
 
 let finalIndex=0;
@@ -513,13 +475,22 @@ let finalIndex=0;
 function finalTyping(){
 
 
-if(finalIndex<finalText.length){
+if(finalIndex<finalMessage.length){
 
 
-document.getElementById("finalMessage").innerHTML+=
-finalText[finalIndex]==="\n"
-?"<br>"
-:finalText[finalIndex];
+let char=finalMessage[finalIndex];
+
+
+if(char==="\n"){
+
+document.getElementById("finalMessage").innerHTML+="<br>";
+
+}else{
+
+document.getElementById("finalMessage").innerHTML+=char;
+
+}
+
 
 
 finalIndex++;
@@ -536,10 +507,13 @@ setTimeout(finalTyping,80);
 
 
 
+
+
+
 function heartExplosion(){
 
 
-for(let i=0;i<200;i++){
+for(let i=0;i<150;i++){
 
 
 let heart=document.createElement("div");
@@ -560,15 +534,17 @@ heart.style.fontSize=
 Math.random()*30+10+"px";
 
 
-heart.style.color="white";
-
 
 heart.style.transform=
-`translate(${Math.random()*800-400}px,
-${Math.random()*800-400}px)`;
+`translate(
+${Math.random()*800-400}px,
+${Math.random()*800-400}px
+)`;
+
 
 
 document.body.appendChild(heart);
+
 
 
 setTimeout(()=>{
@@ -576,6 +552,7 @@ setTimeout(()=>{
 heart.remove();
 
 },3000);
+
 
 
 }
