@@ -86,6 +86,77 @@ document.getElementById("continueBtn").onclick=function(){
 
 document.getElementById("storyNext").onclick=function(){
 
-    alert("Gallery page coming next ❤️");
+document.getElementById("story").classList.add("hidden");
+
+document.getElementById("letter").classList.remove("hidden");
+
+startLetter();
+
+};
+const letter = `Dear Amal,
+
+Happy Anniversary ❤️
+
+It's hard to believe it's already been one year.
+
+Thank you for every laugh,
+every conversation,
+every memory we created together.
+
+We weren't perfect.
+
+We both made mistakes.
+
+But every chapter taught us something.
+
+I don't want us to repeat the past.
+
+I want us to build something healthier.
+
+More understanding.
+
+More trust.
+
+More smiles.
+
+Thank you for being part of my story.
+
+Happy Anniversary.
+
+— Ursham`;
+
+let letterIndex = 0;
+
+function startLetter(){
+
+document.getElementById("letterText").innerHTML="";
+
+letterIndex=0;
+
+writeLetter();
+
+}
+
+function writeLetter(){
+
+if(letterIndex<letter.length){
+
+document.getElementById("letterText").innerHTML+=letter.charAt(letterIndex);
+
+letterIndex++;
+
+setTimeout(writeLetter,32);
+
+}else{
+
+document.getElementById("finishBtn").style.display="inline-block";
+
+}
+
+}
+
+document.getElementById("finishBtn").onclick=function(){
+
+alert("Final page coming next ❤️");
 
 };
