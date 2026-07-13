@@ -4,9 +4,11 @@
     box-sizing:border-box;
 }
 
+
 html{
     scroll-behavior:smooth;
 }
+
 
 body{
 
@@ -24,25 +26,27 @@ body::before{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at top,#1b1b1b,black 60%);
-    z-index:-3;
+    radial-gradient(circle at top,#202020,black 65%);
+    z-index:-5;
 
 }
 
 
 
-
-/* STAR BACKGROUND */
+/* ======================
+STARS
+====================== */
 
 
 #stars{
 
     position:fixed;
     inset:0;
-    z-index:-2;
     overflow:hidden;
+    z-index:-2;
 
 }
+
 
 
 .star{
@@ -52,22 +56,23 @@ body::before{
     height:3px;
     background:white;
     border-radius:50%;
-    opacity:.7;
+    opacity:.5;
     animation:twinkle 3s infinite alternate;
 
 }
 
 
+
 @keyframes twinkle{
 
 from{
-opacity:.2;
-transform:scale(.5);
+    opacity:.2;
+    transform:scale(.5);
 }
 
 to{
-opacity:1;
-transform:scale(1.5);
+    opacity:1;
+    transform:scale(1.5);
 }
 
 }
@@ -75,56 +80,65 @@ transform:scale(1.5);
 
 
 
-/* INTRO */
+
+/* ======================
+INTRO
+====================== */
 
 
 #intro{
 
-position:fixed;
-inset:0;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-
-animation:introFade 3s forwards;
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:introFade 3.5s forwards;
 
 }
+
 
 
 .introLogo{
 
-font-size:90px;
-letter-spacing:8px;
-font-weight:600;
-animation:logoGlow 2s infinite alternate;
+    font-family:'Cinzel',serif;
+    font-size:90px;
+    letter-spacing:8px;
+    animation:glow 2s infinite alternate;
 
 }
+
 
 
 #intro p{
 
-color:#888;
-margin-top:25px;
-letter-spacing:3px;
+    margin-top:20px;
+    color:#888;
+    letter-spacing:3px;
 
 }
 
 
 
-@keyframes logoGlow{
+@keyframes glow{
 
 from{
+
 text-shadow:0 0 10px white;
+
 }
 
 to{
-text-shadow:0 0 40px white;
+
+text-shadow:0 0 50px white;
+
 }
 
 }
+
 
 
 @keyframes introFade{
@@ -134,38 +148,45 @@ opacity:1;
 }
 
 100%{
+
 opacity:0;
 visibility:hidden;
-}
 
 }
 
+}
 
 
 
 
-/* LOCK SCREEN */
+
+
+
+/* ======================
+LOCK SCREEN
+====================== */
 
 
 #lockScreen{
 
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:500;
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:500;
 
 }
 
 
+
 .glass{
 
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(20px);
-box-shadow:0 0 40px rgba(255,255,255,.05);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    box-shadow:0 0 40px rgba(255,255,255,.08);
 
 }
 
@@ -173,64 +194,72 @@ box-shadow:0 0 40px rgba(255,255,255,.05);
 
 .login{
 
-padding:50px;
-border-radius:25px;
-text-align:center;
+    padding:50px;
+    border-radius:25px;
+    text-align:center;
 
 }
+
 
 
 .login h1{
 
-font-family:'Cinzel',serif;
-font-size:55px;
+    font-family:'Cinzel',serif;
+    font-size:55px;
 
 }
+
 
 
 .login p{
 
-color:#aaa;
-margin:20px;
+    color:#999;
+    margin:20px;
 
 }
+
 
 
 #password{
 
-background:#050505;
-border:1px solid #333;
-padding:15px;
-width:220px;
-border-radius:30px;
-text-align:center;
-color:white;
-font-size:20px;
+    width:220px;
+    padding:15px;
+    background:#050505;
+    border:1px solid #333;
+    color:white;
+    border-radius:30px;
+    text-align:center;
+    font-size:20px;
 
 }
+
+
 
 
 
 button{
 
-margin-top:25px;
-padding:15px 45px;
-border-radius:50px;
-border:none;
-cursor:pointer;
-background:white;
-color:black;
-transition:.4s;
+    margin-top:25px;
+    padding:15px 45px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:white;
+    color:black;
+    transition:.4s;
 
 }
+
 
 
 button:hover{
 
-transform:scale(1.08);
-box-shadow:0 0 30px white;
+    transform:scale(1.08);
+    box-shadow:0 0 30px white;
 
 }
+
+
 
 
 
@@ -238,7 +267,7 @@ box-shadow:0 0 30px white;
 
 #website{
 
-display:none;
+    display:none;
 
 }
 
@@ -247,53 +276,67 @@ display:none;
 
 
 
-/* HERO */
+/* ======================
+HERO
+====================== */
 
 
 .hero{
 
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 
 }
+
 
 
 .hero h1{
 
-font-family:'Cinzel',serif;
-font-size:75px;
-letter-spacing:5px;
+    font-family:'Cinzel',serif;
+    font-size:75px;
+    letter-spacing:5px;
 
 }
+
 
 
 .hero p{
 
-margin-top:20px;
-color:#aaa;
+    margin-top:20px;
+    color:#aaa;
 
 }
+
 
 
 
 .counter{
 
-margin:40px auto;
-width:260px;
-padding:25px;
-border-radius:25px;
+    width:260px;
+    margin:40px auto;
+    padding:25px;
+    border-radius:25px;
 
 }
+
+
+
+.counter h3{
+
+    color:#aaa;
+
+}
+
 
 
 .counter span{
 
-display:block;
-font-size:55px;
-font-weight:600;
+    display:block;
+    font-size:60px;
+    font-weight:600;
 
 }
 
@@ -301,22 +344,27 @@ font-weight:600;
 
 
 
-/* SECTIONS */
+
+
+/* ======================
+SECTIONS
+====================== */
 
 
 section{
 
-padding:120px 10%;
+    padding:120px 10%;
 
 }
+
 
 
 section h2{
 
-text-align:center;
-font-family:'Cinzel',serif;
-font-size:45px;
-margin-bottom:60px;
+    text-align:center;
+    font-family:'Cinzel',serif;
+    font-size:45px;
+    margin-bottom:60px;
 
 }
 
@@ -325,52 +373,49 @@ margin-bottom:60px;
 
 
 
-
-/* LETTERS */
+/* ======================
+LETTERS
+====================== */
 
 
 .letterBook{
 
-display:flex;
-flex-direction:column;
-gap:40px;
+    display:flex;
+    flex-direction:column;
+    gap:40px;
 
 }
+
 
 
 .letter{
 
-padding:45px;
-border-radius:25px;
-min-height:250px;
-line-height:2;
+    padding:45px;
+    border-radius:25px;
+    min-height:220px;
+    line-height:2;
 
-animation:appear linear;
-animation-timeline:view();
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
 
 }
+
+
+
+.letter.show{
+
+    opacity:1;
+    transform:translateY(0);
+
+}
+
 
 
 .letter h3{
 
-margin-bottom:20px;
-font-family:'Cinzel',serif;
-
-}
-
-
-
-@keyframes appear{
-
-from{
-opacity:0;
-transform:translateY(50px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+    font-family:'Cinzel',serif;
+    margin-bottom:20px;
 
 }
 
@@ -379,83 +424,24 @@ transform:translateY(0);
 
 
 
-/* GALLERY */
 
-
-.galleryGrid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-
-}
-
-
-.memory{
-
-width:100%;
-aspect-ratio:1;
-object-fit:cover;
-border-radius:25px;
-cursor:pointer;
-transition:.5s;
-border:1px solid #333;
-
-}
-
-
-.memory:hover{
-
-transform:translateY(-10px) scale(1.04);
-box-shadow:0 0 40px rgba(255,255,255,.3);
-
-}
-
-
-
-
-/* IMAGE VIEWER */
-
-
-#viewer{
-
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.95);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:1000;
-
-}
-
-
-#viewer img{
-
-max-width:90%;
-max-height:90%;
-border-radius:20px;
-
-}
-
-
-
-
-
-/* QUOTE */
+/* ======================
+QUOTE
+====================== */
 
 
 .quote{
 
-text-align:center;
+    text-align:center;
 
 }
+
 
 
 .quote h2{
 
-font-weight:300;
-line-height:1.8;
+    font-weight:300;
+    line-height:1.8;
 
 }
 
@@ -463,43 +449,48 @@ line-height:1.8;
 
 
 
-/* FINAL */
+
+
+/* ======================
+ENDING
+====================== */
 
 
 .ending{
 
-text-align:center;
+    text-align:center;
 
 }
+
 
 
 #finalScreen{
 
-display:none;
-margin-top:80px;
-animation:fade 2s;
+    display:none;
+    margin-top:70px;
+    animation:fade 2s;
 
 }
+
 
 
 #finalScreen h1{
 
-font-family:'Cinzel',serif;
-font-size:60px;
+    font-family:'Cinzel',serif;
+    font-size:60px;
 
 }
+
 
 
 #finalMessage{
 
-margin-top:30px;
-font-size:22px;
-line-height:2;
-color:#ccc;
+    margin-top:30px;
+    font-size:22px;
+    line-height:2;
+    color:#ccc;
 
 }
-
-
 
 
 
@@ -518,62 +509,37 @@ opacity:1;
 
 
 
-footer{
-
-padding:50px;
-text-align:center;
-color:#555;
-
-}
 
 
 
-
-
-/* MUSIC */
-
-
-#musicBtn{
-
-position:fixed;
-bottom:25px;
-right:25px;
-width:60px;
-height:60px;
-border-radius:50%;
-z-index:99;
-
-}
-
-
-
-
-
-/* HEART */
+/* ======================
+HEARTS
+====================== */
 
 
 .heart{
 
-position:fixed;
-pointer-events:none;
-color:#fff;
-animation:heartFade 2s forwards;
+    position:fixed;
+    color:white;
+    pointer-events:none;
+    animation:heartMove 2s forwards;
 
 }
 
 
-@keyframes heartFade{
+
+@keyframes heartMove{
 
 from{
 
-transform:scale(1);
+transform:translateY(0) scale(1);
 opacity:1;
 
 }
 
 to{
 
-transform:translateY(-80px) scale(0);
+transform:translateY(-100px) scale(0);
 opacity:0;
 
 }
@@ -584,34 +550,49 @@ opacity:0;
 
 
 
+footer{
+
+    padding:50px;
+    text-align:center;
+    color:#555;
+
+}
+
+
+
+
+
+
+
 @media(max-width:700px){
 
 
 .introLogo{
-font-size:50px;
+
+    font-size:50px;
+
 }
 
 
 .hero h1{
 
-font-size:45px;
+    font-size:45px;
 
 }
 
 
 section{
 
-padding:80px 6%;
+    padding:80px 6%;
 
 }
 
 
 .login h1{
 
-font-size:40px;
+    font-size:40px;
 
 }
 
 
 }
-
