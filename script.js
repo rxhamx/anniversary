@@ -16,19 +16,20 @@ window.addEventListener("load",()=>{
 
 
 // ============================
-// PASSWORD
+// PASSWORD 1507
 // ============================
 
 
-const password=document.getElementById("password");
-const unlock=document.getElementById("unlockBtn");
-const wrong=document.getElementById("wrong");
+const unlockBtn=document.getElementById("unlockBtn");
 
 
-unlock.onclick=function(){
+unlockBtn.onclick=function(){
 
 
-if(password.value==="1507"){
+let password=document.getElementById("password").value;
+
+
+if(password==="1507"){
 
 
 document.getElementById("lockScreen").style.display="none";
@@ -36,20 +37,20 @@ document.getElementById("lockScreen").style.display="none";
 document.getElementById("website").style.display="block";
 
 
-createStars();
+createParticles();
 
-startHero();
+startTitle();
 
 updateDays();
 
 
-}else{
+}
+
+else{
 
 
-wrong.innerHTML="wrong passcode.";
-
-
-password.value="";
+document.getElementById("wrong").innerHTML=
+"wrong passcode ❤️";
 
 
 }
@@ -61,50 +62,57 @@ password.value="";
 
 
 
+
+
 // ============================
-// HERO TYPEWRITER
+// TYPEWRITER HERO
 // ============================
 
 
-const title="happy anniversary.";
+let titleText="happy anniversary, amal ❤️";
 
-const subtitle=
-"one year of memories, moments, and a story i'll always remember.";
+
+let subtitleText=
+"365 days of memories, smiles, and moments i'll always remember.";
+
 
 
 let titleIndex=0;
+
 let subtitleIndex=0;
 
 
 
-function startHero(){
+function startTitle(){
 
-typeTitle();
+writeTitle();
 
 }
 
 
 
-function typeTitle(){
+function writeTitle(){
 
 
-if(titleIndex<title.length){
+if(titleIndex<titleText.length){
 
 
-document.getElementById("heroTitle").innerHTML+=
-title[titleIndex];
+document.getElementById("title").innerHTML+=
+titleText[titleIndex];
 
 
 titleIndex++;
 
 
-setTimeout(typeTitle,100);
+setTimeout(writeTitle,100);
 
 
-}else{
+}
+
+else{
 
 
-typeSubtitle();
+writeSubtitle();
 
 
 }
@@ -114,27 +122,29 @@ typeSubtitle();
 
 
 
-
-function typeSubtitle(){
-
-
-if(subtitleIndex<subtitle.length){
+function writeSubtitle(){
 
 
-document.getElementById("heroSubtitle").innerHTML+=
-subtitle[subtitleIndex];
+if(subtitleIndex<subtitleText.length){
+
+
+document.getElementById("subtitle").innerHTML+=
+subtitleText[subtitleIndex];
 
 
 subtitleIndex++;
 
 
-setTimeout(typeSubtitle,35);
+setTimeout(writeSubtitle,40);
 
 
 }
 
 
 }
+
+
+
 
 
 
@@ -142,63 +152,21 @@ setTimeout(typeSubtitle,35);
 
 
 // ============================
-// STARS
-// ============================
-
-
-function createStars(){
-
-
-const stars=document.getElementById("stars");
-
-
-for(let i=0;i<150;i++){
-
-
-let star=document.createElement("div");
-
-
-star.className="star";
-
-
-star.style.left=Math.random()*100+"vw";
-
-star.style.top=Math.random()*100+"vh";
-
-
-star.style.animationDelay=
-Math.random()*5+"s";
-
-
-stars.appendChild(star);
-
-
-}
-
-
-}
-
-
-
-
-
-
-// ============================
-// DAYS SINCE 15 JULY
+// 365 DAYS COUNTER
 // ============================
 
 
 function updateDays(){
 
 
-let start = new Date("2025-07-15");
+
+let startDate=new Date("2025-07-15");
+
+let today=new Date();
 
 
 
-let now=new Date();
-
-
-let difference=now-start;
+let difference=today-startDate;
 
 
 
@@ -208,7 +176,16 @@ difference/(1000*60*60*24)
 
 
 
+if(days<0){
+
+days=0;
+
+}
+
+
+
 document.getElementById("days").innerHTML=days;
+
 
 
 }
@@ -220,8 +197,57 @@ document.getElementById("days").innerHTML=days;
 
 
 
+
 // ============================
-// FLOATING HEARTS
+// PARTICLES
+// ============================
+
+
+function createParticles(){
+
+
+let area=document.getElementById("particles");
+
+
+
+for(let i=0;i<100;i++){
+
+
+let particle=document.createElement("div");
+
+
+particle.className="particle";
+
+
+particle.style.left=Math.random()*100+"vw";
+
+
+particle.style.top=Math.random()*100+"vh";
+
+
+particle.style.animationDelay=
+Math.random()*5+"s";
+
+
+
+area.appendChild(particle);
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+// ============================
+// HEARTS FOLLOW MOUSE
 // ============================
 
 
@@ -239,19 +265,19 @@ heart.innerHTML="❤";
 
 heart.style.left=e.clientX+"px";
 
+
 heart.style.top=e.clientY+"px";
 
 
 
-document.getElementById("hearts").appendChild(heart);
+document.getElementById("hearts")
+.appendChild(heart);
 
 
 
 setTimeout(()=>{
 
-
 heart.remove();
-
 
 },2000);
 
@@ -279,30 +305,30 @@ const letters=[
 
 Until I found you, I never knew someone could become such an important part of my life.
 
-Thank you for every smile, every conversation, and every memory that became special.`,
+Thank you for every smile, every conversation, and every beautiful memory we created together.`,
 
 
-`A year is not just a number.
+`365 days are not just numbers.
 
-It is every laugh, every moment, every lesson, and every memory that became part of our story.
+They are moments, laughs, conversations, and memories that became a part of my heart.
 
-Some moments stay with us forever.`,
+Every chapter had something special.`,
 
 
 `No matter where life takes us,
 
-I'll always be grateful our paths crossed.
+I will always be grateful our paths crossed.
 
-Thank you for being a beautiful chapter of my life.
+Thank you for being a beautiful chapter of my story.
 
-Happy Anniversary, Amal.`
-
+Happy Anniversary ❤️`
 
 ];
 
 
 
-let written=[false,false,false];
+
+let completed=[false,false,false];
 
 
 
@@ -317,21 +343,22 @@ box.getBoundingClientRect().top;
 
 
 
-if(position < window.innerHeight-120 && !written[index]){
+if(position < window.innerHeight-100 &&
+completed[index]===false){
 
 
-written[index]=true;
+completed[index]=true;
+
 
 box.classList.add("show");
 
 
-writeLetter(index);
+typeLetter(index);
 
 
 }
 
 
-
 });
 
 
@@ -341,15 +368,17 @@ writeLetter(index);
 
 
 
-function writeLetter(number){
+
+function typeLetter(number){
 
 
 let text=letters[number];
 
-let index=0;
+let i=0;
 
 
-let target=document.getElementById(
+let target=
+document.getElementById(
 "letter"+(number+1)
 );
 
@@ -358,13 +387,13 @@ let target=document.getElementById(
 function typing(){
 
 
-if(index<text.length){
+if(i<text.length){
 
 
-target.innerHTML+=text[index];
+target.innerHTML+=text[i];
 
 
-index++;
+i++;
 
 
 setTimeout(typing,35);
@@ -387,13 +416,15 @@ typing();
 
 
 
+
+
 // ============================
 // QUOTE
 // ============================
 
 
-let quote=
-"Some people become memories. Some memories become forever.";
+let quoteText=
+"Some people become memories. Some memories become forever ❤️";
 
 
 let quoteIndex=0;
@@ -403,20 +434,20 @@ let quoteIndex=0;
 setTimeout(()=>{
 
 
-function writeQuote(){
+function quoteTyping(){
 
 
-if(quoteIndex<quote.length){
+if(quoteIndex<quoteText.length){
 
 
 document.getElementById("quote").innerHTML+=
-quote[quoteIndex];
+quoteText[quoteIndex];
 
 
 quoteIndex++;
 
 
-setTimeout(writeQuote,50);
+setTimeout(quoteTyping,60);
 
 
 }
@@ -425,10 +456,11 @@ setTimeout(writeQuote,50);
 }
 
 
-writeQuote();
+quoteTyping();
 
 
-},4000);
+},5000);
+
 
 
 
@@ -442,16 +474,21 @@ writeQuote();
 // ============================
 
 
-document.getElementById("secretButton").onclick=function(){
+document.getElementById("finalButton")
+.onclick=function(){
 
 
-document.getElementById("finalScreen").style.display="block";
+document.getElementById("final")
+.style.display="block";
+
 
 
 heartExplosion();
 
 
+
 finalTyping();
+
 
 
 };
@@ -459,9 +496,9 @@ finalTyping();
 
 
 
+let finalMessage=
+"Until I found you, I found a part of myself.\n\nHappy Anniversary, Amal ❤️";
 
-const finalMessage=
-"Until I found you, I found a part of myself.\n\nHappy Anniversary, Amal.";
 
 
 let finalIndex=0;
@@ -477,13 +514,18 @@ if(finalIndex<finalMessage.length){
 let char=finalMessage[finalIndex];
 
 
+
 if(char==="\n"){
 
-document.getElementById("finalMessage").innerHTML+="<br>";
+document.getElementById("finalText")
+.innerHTML+="<br>";
 
-}else{
+}
 
-document.getElementById("finalMessage").innerHTML+=char;
+else{
+
+document.getElementById("finalText")
+.innerHTML+=char;
 
 }
 
@@ -504,9 +546,8 @@ setTimeout(finalTyping,80);
 
 
 
-
-
 function heartExplosion(){
+
 
 
 for(let i=0;i<150;i++){
@@ -523,7 +564,9 @@ heart.innerHTML="❤";
 
 heart.style.left="50vw";
 
+
 heart.style.top="50vh";
+
 
 
 heart.style.fontSize=
