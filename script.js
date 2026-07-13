@@ -1,162 +1,286 @@
-const correctCode = "1507";
-let entered = "";
+// --------------------
+// LOADING SCREEN
+// --------------------
 
-const dots = document.querySelectorAll("#dots span");
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("lockScreen").style.display = "flex";
+    }, 2500);
+});
 
-function updateDots(){
+// --------------------
+// PASSCODE
+// --------------------
 
-    dots.forEach((dot,index)=>{
+const password = document.getElementById("password");
+const unlockBtn = document.getElementById("unlockBtn");
+const wrong = document.getElementById("wrong");
 
-        dot.classList.toggle("active",index<entered.length);
+unlockBtn.onclick = unlock;
 
-    });
-
-}
-
-function press(num){
-
-    if(entered.length>=4) return;
-
-    entered += num;
-
-    updateDots();
-
-    if(entered===correctCode){
-
-        setTimeout(unlock,500);
-
+password.addEventListener("keypress", function(e){
+    if(e.key==="Enter"){
+        unlock();
     }
-
-}
-
-function erase(){
-
-    entered=entered.slice(0,-1);
-
-    updateDots();
-
-}
+});
 
 function unlock(){
 
-    document.getElementById("lockScreen").classList.add("hidden");
+    if(password.value==="1507"){
 
-    document.getElementById("intro").classList.remove("hidden");
+        document.getElementById("lockScreen").style.display="none";
 
-    typeWriter();
+        document.getElementById("website").style.display="block";
 
-}
+        document.getElementById("website").classList.add("fadeIn");
 
-const message = `One year.
+        heroType();
 
-One story.
+    }else{
 
-Many memories.
+        wrong.innerText="Wrong passcode.";
 
-Many lessons.
-
-Yet somehow...
-
-We're still here.
-
-Happy Anniversary ❤️`;
-
-let i=0;
-
-function typeWriter(){
-
-    if(i<message.length){
-
-        document.getElementById("typing").innerHTML += message.charAt(i);
-
-        i++;
-
-        setTimeout(typeWriter,40);
+        password.value="";
 
     }
 
 }
-document.getElementById("continueBtn").onclick=function(){
 
-    document.getElementById("intro").classList.add("hidden");
+// --------------------
+// HERO TYPEWRITER
+// --------------------
 
-    document.getElementById("story").classList.remove("hidden");
+const heroText="happy anniversary.";
 
-};
+const heroSubtitle="one year. countless memories. a story i'll always cherish.";
 
-document.getElementById("storyNext").onclick=function(){
+let heroIndex=0;
 
-document.getElementById("story").classList.add("hidden");
+function heroType(){
 
-document.getElementById("letter").classList.remove("hidden");
+    if(heroIndex<heroText.length){
 
-startLetter();
+        document.getElementById("heroTitle").innerHTML+=heroText.charAt(heroIndex);
 
-};
-const letter = `Dear Amal,
+        heroIndex++;
 
-Happy Anniversary ❤️
+        setTimeout(heroType,90);
 
-It's hard to believe it's already been one year.
+    }else{
 
-Thank you for every laugh,
+        subtitleType();
+
+    }
+
+}
+
+let subIndex=0;
+
+function subtitleType(){
+
+    if(subIndex<heroSubtitle.length){
+
+        document.getElementById("heroSubtitle").innerHTML+=heroSubtitle.charAt(subIndex);
+
+        subIndex++;
+
+        setTimeout(subtitleType,30);
+
+    }
+
+}
+
+// --------------------
+// LETTER
+// --------------------
+
+const letter=`Dear Amal,
+
+Until I found you,
+I never knew someone could become such an important part of my life.
+
+Thank you for every smile,
 every conversation,
-every memory we created together.
+every memory,
+and every lesson.
 
-We weren't perfect.
+Whether life keeps us together or takes us on different paths,
+I'll always be grateful that our paths crossed.
 
-We both made mistakes.
-
-But every chapter taught us something.
-
-I don't want us to repeat the past.
-
-I want us to build something healthier.
-
-More understanding.
-
-More trust.
-
-More smiles.
-
-Thank you for being part of my story.
+No matter where life takes us,
+I'll always be grateful our paths crossed.
 
 Happy Anniversary.
 
-— Ursham`;
+— subzero.
+`;
 
-let letterIndex = 0;
+let letterIndex=0;
 
-function startLetter(){
+document.getElementById("begin").onclick=function(){
 
-document.getElementById("letterText").innerHTML="";
+    document.querySelector(".letterSection").scrollIntoView({
+        behavior:"smooth"
+    });
 
-letterIndex=0;
+    if(letterIndex===0){
+        typeLetter();
+    }
 
-writeLetter();
+};
+
+function typeLetter(){
+
+    if(letterIndex<letter.length){
+
+        document.getElementById("letterText").innerHTML+=letter.charAt(letterIndex);
+
+        letterIndex++;
+
+        setTimeout(typeLetter,28);
+
+    }
 
 }
 
-function writeLetter(){
+// --------------------
+// QUOTE
+// --------------------
 
-if(letterIndex<letter.length){
+const quote="Some people stay forever. Some become memories. Either way, they leave a part of themselves with us.";
 
-document.getElementById("letterText").innerHTML+=letter.charAt(letterIndex);
+let quoteIndex=0;
 
-letterIndex++;
+window.addEventListener("scroll",()=>{
 
-setTimeout(writeLetter,32);
+    const quoteSection=document.querySelector(".quote");
 
-}else{
+    const top=quoteSection.getBoundingClientRect().top;
 
-document.getElementById("finishBtn").style.display="inline-block";
+    if(top<window.innerHeight-120){
+
+        if(quoteIndex===0){
+
+            quoteWriter();
+
+        }
+
+    }
+
+});
+
+function quoteWriter(){
+
+    if(quoteIndex<quote.length){
+
+        document.getElementById("quoteText").innerHTML+=quote.charAt(quoteIndex);
+
+        quoteIndex++;
+
+        setTimeout(quoteWriter,35);
+
+    }
 
 }
 
+// --------------------
+// FLOATING HEARTS
+// --------------------
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.animationDuration=(5+Math.random()*6)+"s";
+
+    heart.style.fontSize=(12+Math.random()*18)+"px";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },10000);
+
 }
 
-document.getElementById("finishBtn").onclick=function(){
+setInterval(createHeart,350);
 
-alert("Final page coming next ❤️");
+// --------------------
+// SECRET ENDING
+// --------------------
+
+document.getElementById("secretButton").onclick=function(){
+
+    document.getElementById("ending").style.display="block";
+
+    document.getElementById("ending").classList.add("fadeIn");
+
+    endingType();
+
+};
+
+const endingMessage=`No matter what happens in the future,
+I'll always appreciate what we had.
+
+Thank you for being part of one of the most unforgettable chapters of my life.
+
+Happy Anniversary, Amal.
+
+❤`;
+
+let endingIndex=0;
+
+function endingType(){
+
+    if(endingIndex<endingMessage.length){
+
+        document.getElementById("endingText").innerHTML+=endingMessage.charAt(endingIndex);
+
+        endingIndex++;
+
+        setTimeout(endingType,35);
+
+    }
+
+}
+
+// --------------------
+// MUSIC
+// --------------------
+
+const music=document.getElementById("music");
+
+const musicBtn=document.getElementById("musicBtn");
+
+let playing=false;
+
+musicBtn.onclick=function(){
+
+    if(!playing){
+
+        music.play();
+
+        playing=true;
+
+        musicBtn.innerHTML="❚❚";
+
+    }else{
+
+        music.pause();
+
+        playing=false;
+
+        musicBtn.innerHTML="♫";
+
+    }
 
 };
