@@ -1,46 +1,53 @@
-let code = "";
+const correctCode = "1507";
+let entered = "";
 
-const correct = "1507";
+const dots = document.querySelectorAll("#dots span");
 
-const display = document.getElementById("display");
+function updateDots(){
 
-function press(value){
+    dots.forEach((dot,index)=>{
 
-    if(value==="❤") return;
+        dot.classList.toggle("active",index<entered.length);
 
-    if(code.length>=4) return;
+    });
 
-    code+=value;
+}
 
-    display.innerHTML="● ".repeat(code.length);
+function press(num){
 
-    if(code===correct){
+    if(entered.length>=4) return;
 
-        setTimeout(unlock,400);
+    entered += num;
+
+    updateDots();
+
+    if(entered===correctCode){
+
+        setTimeout(unlock,500);
 
     }
 
 }
 
-function backspace(){
+function erase(){
 
-    code=code.slice(0,-1);
+    entered=entered.slice(0,-1);
 
-    display.innerHTML="● ".repeat(code.length);
+    updateDots();
 
 }
 
 function unlock(){
 
-    document.getElementById("login").style.display="none";
+    document.getElementById("lockScreen").classList.add("hidden");
 
-    document.getElementById("main").style.display="block";
+    document.getElementById("intro").classList.remove("hidden");
 
     typeWriter();
 
 }
 
-const text=`One year.
+const message = `One year.
 
 One story.
 
@@ -58,20 +65,20 @@ let i=0;
 
 function typeWriter(){
 
-    if(i<text.length){
+    if(i<message.length){
 
-        document.getElementById("typewriter").innerHTML+=text.charAt(i);
+        document.getElementById("typing").innerHTML += message.charAt(i);
 
         i++;
 
-        setTimeout(typeWriter,45);
+        setTimeout(typeWriter,40);
 
     }
 
 }
 
-document.getElementById("nextBtn").onclick=()=>{
+document.getElementById("continueBtn").onclick=function(){
 
-    alert("More surprises coming soon ❤️");
+    alert("Page 2 coming next ❤️");
 
 };
