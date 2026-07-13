@@ -1,103 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Anniversary ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>subzero.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Special+Elite&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="background"></div>
+<div id="hearts"></div>
 
-<!-- LOCK SCREEN -->
-<section id="lockScreen" class="screen">
+<div id="loading">
 
-    <div class="heart">❤</div>
+<div class="logo">subzero.</div>
 
-    <h2>Enter Passcode</h2>
-
-    <div id="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="keypad">
-
-        <button onclick="press(1)">1</button>
-        <button onclick="press(2)">2</button>
-        <button onclick="press(3)">3</button>
-
-        <button onclick="press(4)">4</button>
-        <button onclick="press(5)">5</button>
-        <button onclick="press(6)">6</button>
-
-        <button onclick="press(7)">7</button>
-        <button onclick="press(8)">8</button>
-        <button onclick="press(9)">9</button>
-
-        <button disabled>❤</button>
-        <button onclick="press(0)">0</button>
-        <button onclick="erase()">⌫</button>
-
-    </div>
-
-</section>
-
-<!-- INTRO -->
-<section id="intro" class="screen hidden">
-
-<h1>Happy Anniversary ❤️</h1>
-
-<p id="typing"></p>
-
-<button id="continueBtn">
-Continue →
-</button>
-
-</section>
-<section id="story" class="screen hidden">
-
-<h1>Our Story ❤️</h1>
-
-<div id="storyText">
-
-<p>One year.</p>
-
-<p>365 days.</p>
-
-<p>Thousands of memories.</p>
-
-<p>Some beautiful.</p>
-
-<p>Some difficult.</p>
-
-<p>Every one helped us grow.</p>
+<p class="loadingText">loading memories...</p>
 
 </div>
 
-<button id="storyNext">
-Continue →
+<div id="lockScreen">
+
+<h1>subzero.</h1>
+
+<p>enter the passcode</p>
+
+<input
+id="password"
+type="password"
+maxlength="4"
+placeholder="••••">
+
+<button id="unlockBtn">
+unlock
+</button>
+
+<p id="wrong"></p>
+
+</div>
+
+<div id="website">
+
+<section class="hero">
+
+<h1 id="heroTitle"></h1>
+
+<p id="heroSubtitle"></p>
+
+<button id="begin">
+open
 </button>
 
 </section>
-<section id="letter" class="screen hidden">
 
-<h1>♡</h1>
+<section class="letterSection">
 
-<div id="letterText"></div>
+<h2>to amal.</h2>
 
-<button id="finishBtn">
-One Last Thing →
-</button>
+<div class="letter">
+
+<p id="letterText"></p>
+
+</div>
 
 </section>
+
+<section class="timeline">
+
+<h2>our story.</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>the beginning</h3>
+<p>
+everything started with a simple conversation.
+none of us knew it would become something unforgettable.
+</p>
+</div>
+
+<div class="card">
+<h3>the memories</h3>
+<p>
+every laugh,
+every late night,
+every small moment became part of a story
+i'll always remember.
+</p>
+</div>
+
+<div class="card">
+<h3>today</h3>
+<p>
+no matter where life takes us,
+i'll always be grateful
+our paths crossed.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="gallery">
+
+<h2>memories.</h2>
+
+<div class="galleryGrid">
+
+<div class="photo">
+<span>your photo</span>
+</div>
+
+<div class="photo">
+<span>our memory</span>
+</div>
+
+<div class="photo">
+<span>favorite moment</span>
+</div>
+
+<div class="photo">
+<span>another memory</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="quote">
+
+<h2 id="quoteText"></h2>
+
+</section>
+
+<section class="hiddenMessage">
+
+<button id="secretButton">
+
+there's one last thing...
+
+</button>
+
+<div id="ending">
+
+<h2>happy anniversary.</h2>
+
+<p id="endingText"></p>
+
+</div>
+
+</section>
+
+<footer>
+
+subzero.
+
+</footer>
+
+</div>
+
+<audio
+id="music"
+loop>
+
+<source src="music.mp3" type="audio/mpeg">
+
+</audio>
+
+<button id="musicBtn">
+
+♫
+
+</button>
+
 <script src="script.js"></script>
 
 </body>
