@@ -16,32 +16,30 @@ window.addEventListener("load",()=>{
 
 
 // ============================
-// PASSWORD 1507
+// PASSWORD
 // ============================
 
-
-const unlockBtn=document.getElementById("unlockBtn");
-
-
-unlockBtn.onclick=function(){
+document.getElementById("unlockBtn").onclick=function(){
 
 
-let password=document.getElementById("password").value;
+let code=document.getElementById("password").value;
 
 
-if(password==="1507"){
+if(code==="1507"){
 
 
 document.getElementById("lockScreen").style.display="none";
+
 
 document.getElementById("website").style.display="block";
 
 
 createParticles();
 
-startTitle();
+typeTitle();
 
 updateDays();
+
 
 
 }
@@ -56,6 +54,7 @@ document.getElementById("wrong").innerHTML=
 }
 
 
+
 };
 
 
@@ -65,46 +64,40 @@ document.getElementById("wrong").innerHTML=
 
 
 // ============================
-// TYPEWRITER HERO
+// TITLE TYPEWRITER
 // ============================
 
 
-let titleText="happy anniversary, amal ❤️";
+let title=
+"happy anniversary, amal ❤️";
 
 
-let subtitleText=
-"365 days of memories, smiles, and moments i'll always remember.";
+let subtitle=
+"365 days of memories, smiles, and moments i'll always keep close.";
 
 
+let titlePos=0;
 
-let titleIndex=0;
-
-let subtitleIndex=0;
-
-
-
-function startTitle(){
-
-writeTitle();
-
-}
+let subtitlePos=0;
 
 
 
-function writeTitle(){
+
+function typeTitle(){
 
 
-if(titleIndex<titleText.length){
+if(titlePos<title.length){
 
 
 document.getElementById("title").innerHTML+=
-titleText[titleIndex];
+title[titlePos];
 
 
-titleIndex++;
+titlePos++;
 
 
-setTimeout(writeTitle,100);
+setTimeout(typeTitle,100);
+
 
 
 }
@@ -112,38 +105,38 @@ setTimeout(writeTitle,100);
 else{
 
 
-writeSubtitle();
+typeSubtitle();
 
 
 }
 
 
+
 }
 
 
 
-function writeSubtitle(){
+function typeSubtitle(){
 
 
-if(subtitleIndex<subtitleText.length){
+if(subtitlePos<subtitle.length){
 
 
 document.getElementById("subtitle").innerHTML+=
-subtitleText[subtitleIndex];
+subtitle[subtitlePos];
 
 
-subtitleIndex++;
+subtitlePos++;
 
 
-setTimeout(writeSubtitle,40);
-
-
-}
+setTimeout(typeSubtitle,40);
 
 
 }
 
 
+
+}
 
 
 
@@ -152,7 +145,7 @@ setTimeout(writeSubtitle,40);
 
 
 // ============================
-// 365 DAYS COUNTER
+// DAYS COUNTER
 // ============================
 
 
@@ -160,18 +153,21 @@ function updateDays(){
 
 
 
-let startDate=new Date("2025-07-15");
+let start=new Date("2025-07-15");
+
 
 let today=new Date();
 
 
 
-let difference=today-startDate;
+let difference=today-start;
 
 
 
 let days=Math.floor(
+
 difference/(1000*60*60*24)
+
 );
 
 
@@ -206,39 +202,38 @@ document.getElementById("days").innerHTML=days;
 function createParticles(){
 
 
-let area=document.getElementById("particles");
+let box=document.getElementById("particles");
 
 
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 
 
-let particle=document.createElement("div");
+let p=document.createElement("div");
 
 
-particle.className="particle";
+p.className="particle";
 
 
-particle.style.left=Math.random()*100+"vw";
+p.style.left=Math.random()*100+"vw";
 
 
-particle.style.top=Math.random()*100+"vh";
+p.style.top=Math.random()*100+"vh";
 
 
-particle.style.animationDelay=
+p.style.animationDelay=
 Math.random()*5+"s";
 
 
 
-area.appendChild(particle);
+box.appendChild(p);
 
-
-}
 
 
 }
 
 
+}
 
 
 
@@ -247,7 +242,7 @@ area.appendChild(particle);
 
 
 // ============================
-// HEARTS FOLLOW MOUSE
+// HEARTS
 // ============================
 
 
@@ -260,7 +255,7 @@ let heart=document.createElement("div");
 heart.className="heart";
 
 
-heart.innerHTML="❤";
+heart.innerHTML="❤️";
 
 
 heart.style.left=e.clientX+"px";
@@ -277,7 +272,9 @@ document.getElementById("hearts")
 
 setTimeout(()=>{
 
+
 heart.remove();
+
 
 },2000);
 
@@ -292,34 +289,35 @@ heart.remove();
 
 
 
-
 // ============================
 // LETTERS
 // ============================
 
 
-const letters=[
+let letters=[
 
 
 `Dear Amal,
 
 Until I found you, I never knew someone could become such an important part of my life.
 
-Thank you for every smile, every conversation, and every beautiful memory we created together.`,
+Thank you for every smile, every conversation, and every memory that became special.
+
+You will always be a beautiful chapter in my story.`,
 
 
-`365 days are not just numbers.
+`365 days are more than just a number.
 
-They are moments, laughs, conversations, and memories that became a part of my heart.
+They are the laughs, the talks, the little moments, and the memories that made this journey meaningful.
 
-Every chapter had something special.`,
+Every moment had its own place in my heart.`,
 
 
 `No matter where life takes us,
 
-I will always be grateful our paths crossed.
+I will always be grateful that our paths crossed.
 
-Thank you for being a beautiful chapter of my story.
+Thank you for being part of my story.
 
 Happy Anniversary ❤️`
 
@@ -327,33 +325,32 @@ Happy Anniversary ❤️`
 
 
 
-
-let completed=[false,false,false];
+let done=[false,false,false];
 
 
 
 window.addEventListener("scroll",()=>{
 
 
-document.querySelectorAll(".letter").forEach((box,index)=>{
+document.querySelectorAll(".letter")
+.forEach((box,index)=>{
 
 
-let position=
+let top=
 box.getBoundingClientRect().top;
 
 
 
-if(position < window.innerHeight-100 &&
-completed[index]===false){
+if(top<window.innerHeight-100 && !done[index]){
 
 
-completed[index]=true;
+done[index]=true;
 
 
 box.classList.add("show");
 
 
-typeLetter(index);
+writeLetter(index);
 
 
 }
@@ -368,17 +365,16 @@ typeLetter(index);
 
 
 
-
-function typeLetter(number){
+function writeLetter(number){
 
 
 let text=letters[number];
 
+
 let i=0;
 
 
-let target=
-document.getElementById(
+let element=document.getElementById(
 "letter"+(number+1)
 );
 
@@ -390,7 +386,7 @@ function typing(){
 if(i<text.length){
 
 
-target.innerHTML+=text[i];
+element.innerHTML+=text[i];
 
 
 i++;
@@ -399,17 +395,20 @@ i++;
 setTimeout(typing,35);
 
 
+
 }
 
 
+
 }
+
 
 
 typing();
 
 
-}
 
+}
 
 
 
@@ -423,40 +422,42 @@ typing();
 // ============================
 
 
-let quoteText=
+let quote=
 "Some people become memories. Some memories become forever ❤️";
 
 
-let quoteIndex=0;
+let q=0;
 
 
 
 setTimeout(()=>{
 
 
-function quoteTyping(){
+function writeQuote(){
 
 
-if(quoteIndex<quoteText.length){
+if(q<quote.length){
 
 
 document.getElementById("quote").innerHTML+=
-quoteText[quoteIndex];
+quote[q];
 
 
-quoteIndex++;
+q++;
 
 
-setTimeout(quoteTyping,60);
-
-
-}
+setTimeout(writeQuote,60);
 
 
 }
 
 
-quoteTyping();
+
+}
+
+
+
+writeQuote();
 
 
 },5000);
@@ -470,7 +471,7 @@ quoteTyping();
 
 
 // ============================
-// FINAL ENDING
+// FINAL MESSAGE
 // ============================
 
 
@@ -482,13 +483,10 @@ document.getElementById("final")
 .style.display="block";
 
 
-
-heartExplosion();
-
+explodeHearts();
 
 
-finalTyping();
-
+typeFinal();
 
 
 };
@@ -496,58 +494,63 @@ finalTyping();
 
 
 
-let finalMessage=
+let final=
 "Until I found you, I found a part of myself.\n\nHappy Anniversary, Amal ❤️";
 
 
-
-let finalIndex=0;
-
-
-
-function finalTyping(){
-
-
-if(finalIndex<finalMessage.length){
-
-
-let char=finalMessage[finalIndex];
+let finalPos=0;
 
 
 
-if(char==="\n"){
+function typeFinal(){
+
+
+if(finalPos<final.length){
+
+
+let letter=final[finalPos];
+
+
+
+if(letter==="\n"){
+
 
 document.getElementById("finalText")
 .innerHTML+="<br>";
+
 
 }
 
 else{
 
+
 document.getElementById("finalText")
-.innerHTML+=char;
-
-}
-
-
-
-finalIndex++;
-
-
-setTimeout(finalTyping,80);
-
-
-}
+.innerHTML+=letter;
 
 
 }
 
 
 
+finalPos++;
 
 
-function heartExplosion(){
+setTimeout(typeFinal,80);
 
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+function explodeHearts(){
 
 
 for(let i=0;i<150;i++){
@@ -559,7 +562,7 @@ let heart=document.createElement("div");
 heart.className="heart";
 
 
-heart.innerHTML="❤";
+heart.innerHTML="❤️";
 
 
 heart.style.left="50vw";
@@ -568,10 +571,8 @@ heart.style.left="50vw";
 heart.style.top="50vh";
 
 
-
 heart.style.fontSize=
 Math.random()*30+10+"px";
-
 
 
 heart.style.transform=
@@ -579,7 +580,6 @@ heart.style.transform=
 ${Math.random()*800-400}px,
 ${Math.random()*800-400}px
 )`;
-
 
 
 document.body.appendChild(heart);
@@ -595,6 +595,7 @@ heart.remove();
 
 
 }
+
 
 
 }
